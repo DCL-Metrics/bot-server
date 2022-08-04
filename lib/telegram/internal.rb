@@ -2,7 +2,7 @@ require_relative 'bot'
 
 module Telegram
   class Internal < Bot
-    BOT_NAME  = :dcl_metrics_internal_notifications_bot
+    BOT_NAME  = :dcl_metrics_internal_bot
     CHAT_ID   = ENV['TELEGRAM_INTERNAL_TARGET_ID']
 
     def self.handle_request(raw_request)
