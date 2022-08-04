@@ -6,7 +6,7 @@ require 'json'
 Dotenv.load
 Bundler.require
 
-Dir.glob('./lib/*.rb') { |f| require f }
+Dir.glob('./lib/telegram/*.rb') { |f| require f }
 require './server'
 
 run Server
