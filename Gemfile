@@ -8,3 +8,7 @@ group :development do
   gem 'rack-test'
   gem 'minitest'
 end
+
+group :production do
+  gem 'puma'
+end
