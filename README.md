@@ -11,11 +11,12 @@ errors, debug output, bug reporting or other information.
 
 #### Use
 
-`level` [string] one of 'info', 'error' or 'critical'
-`message` [string] message to deliver
-`payload` [object, optional] key value object with additional parameters
+ * `level` [string] one of 'info', 'error' or 'critical'
+ * `message` [string] message to deliver
+ * `payload` [object, optional] key value object with additional parameters
 
 ```ruby
+# ruby
 require 'faraday'
 
 URI = 'https://dcl-metrics-bot-server.herokuapp.com/telegram/internal'
