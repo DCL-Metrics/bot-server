@@ -9,11 +9,6 @@ module Telegram
       new(raw_request).handle_request
     end
 
-    # NOTE: this class doesn't use the telegram request cause it's basically
-    # just a message forwarder - it is called by an external source with text to
-    # pass along to a given CHAT_ID and it blindly does so. if it were to start
-    # fielding user input from a telgram bot, then it would use the telgram
-    # request object
     def initialize(request, services = {})
       request.rewind
       @data = JSON.parse(request.read)

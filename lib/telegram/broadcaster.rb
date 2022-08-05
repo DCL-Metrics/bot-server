@@ -30,6 +30,7 @@ module Telegram
     end
 
     def send
+      print "sending #{params} to #{uri}"
       Net::HTTP.post_form(URI(uri), params)
     end
 
