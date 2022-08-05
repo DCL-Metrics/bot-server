@@ -15,13 +15,6 @@ module Telegram
       new(uri, params).send
     end
 
-    def self.send_photo(params)
-      bot = params.delete(:bot)
-      uri = BASE_URI + "/bot#{tokens[bot]}/sendPhoto"
-
-      new(uri, params).send_photo
-    end
-
     def initialize(uri, params)
       @uri = uri
       @params = params
@@ -29,12 +22,8 @@ module Telegram
 
     def send
       print "sending #{params} to #{uri}\n"
-      `curl -s -X POST #{uri} -F "chat_id=#{params[:chat_id]}" -F "text=#{params[:text_to_send]}"`
-    end
 
-    # this one is just easier with curl ¯\_(ツ)_/¯
-    def send_photo
-      `curl -s -F "chat_id=#{params[:chat_id]}" -F "photo=@#{params[:image_path]}" "#{uri}"`
+      `curl -s #{url} -F "chat_id=#{params[:chat_id]}" -F "text=#{params[:text]}"`
     end
 
     private
