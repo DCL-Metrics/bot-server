@@ -1,5 +1,3 @@
-require 'net/http'
-
 module Telegram
   class Broadcaster
     BASE_URI = "https://api.telegram.org"
@@ -31,7 +29,7 @@ module Telegram
 
     def send
       print "sending #{params} to #{uri}"
-      Net::HTTP.post_form(URI(uri), params)
+      `curl -s -F "chat_id=#{params[:chat_id]}" -F "text=#{params[:text_to_send]}"`
     end
 
     # this one is just easier with curl ¯\_(ツ)_/¯
