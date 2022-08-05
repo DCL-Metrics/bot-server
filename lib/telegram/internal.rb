@@ -11,8 +11,11 @@ module Telegram
 
     def initialize(request, services = {})
       request.rewind
-      @data = JSON.parse(request.read)
-      @text_to_send = @data['text']
+      data = JSON.parse(request.read)
+
+      @level = data['level']
+      @message = data['message']
+      @payload = data['payload']
     end
 
     def handle_request
@@ -24,7 +27,14 @@ module Telegram
     end
 
     private
-    attr_reader :request, :text_to_send
+    attr_reader :level, :message, :payload
+
+    def text_to_send
+      text = "#{level.upcase}:\n#{message}\n\n"
+      payload.each { |k,v| text += "#{k}: #{v}\n" }
+
+      text
+    end
 
     def bot_name
       BOT_NAME
