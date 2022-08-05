@@ -29,7 +29,7 @@ module Telegram
 
     def send
       print "sending #{params} to #{uri}\n"
-      `curl -s -F "chat_id=#{params[:chat_id]}" -F "text=#{params[:text_to_send]}" "#{uri}"`
+      `curl -s -X POST #{uri} -F "chat_id=#{params[:chat_id]}" -F "text=#{params[:text_to_send]}"`
     end
 
     # this one is just easier with curl ¯\_(ツ)_/¯
