@@ -4,7 +4,7 @@ module Telegram
 
     def self.tokens
       {
-        dcl_metrics_internal: ENV['TELEGRAM_INTERNAL']
+        dcl_metrics_internal_bot: ENV['TELEGRAM_INTERNAL']
       }
     end
 
@@ -28,7 +28,7 @@ module Telegram
     end
 
     def send
-      print "sending #{params} to #{uri}"
+      print "sending #{params} to #{uri}\n"
       `curl -s -F "chat_id=#{params[:chat_id]}" -F "text=#{params[:text_to_send]}" "#{uri}"`
     end
 
