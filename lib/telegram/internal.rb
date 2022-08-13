@@ -37,7 +37,7 @@ module Telegram
     end
 
     def sanitize(value)
-      return value unless value.class.name == String
+      return value unless value.class == String
 
       # I have no idea why semi-colons fuck up telegram's rendering but they do
       value.gsub!(';', ',')
