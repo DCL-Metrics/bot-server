@@ -5,14 +5,11 @@ module Telegram
     BOT_NAME  = :dcl_metrics_internal_bot
     CHAT_ID   = ENV['TELEGRAM_INTERNAL_TARGET_ID']
 
-    def self.handle_request(raw_request)
-      new(raw_request).handle_request
+    def self.handle_request(data)
+      new(data).handle_request
     end
 
-    def initialize(request, services = {})
-      request.rewind
-      data = JSON.parse(request.read)
-
+    def initialize(data)
       @level = data['level']
       @message = data['message']
       @payload = data['payload']
