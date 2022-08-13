@@ -28,9 +28,20 @@ module Telegram
 
     def text_to_send
       text = "#{level.upcase}:\n#{message}\n\n"
-      payload.each { |k,v| text += "#{k}: #{v}\n" }
+
+      payload.each do |key, value|
+        text += "#{key}: #{sanitize(value)}\n"
+      end
 
       text
+    end
+
+    def sanitize(value)
+      return value unless value.class.name == String
+
+      # I have no idea why semi-colons fuck up telegram's rendering but they do
+      value.gsub!(';', ',')
+      value
     end
 
     def bot_name
