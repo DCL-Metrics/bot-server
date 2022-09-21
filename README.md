@@ -26,7 +26,7 @@ params = {
   payload: { artist: 'beck', album: 'MTV makes me wanna smoke crack' }
 }.to_json
 
-Faraday.post(URI, msg, "Content-Type" => "application/json")
+Faraday.post(URI, params, "Content-Type" => "application/json")
 ```
 
 #### Result
